@@ -1,0 +1,89 @@
+body{
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container{
+    width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+header{
+    background-color: royalblue;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+}
+
+h1{
+    color: white;
+    text-align: center;
+}
+
+.calc-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 50%;
+}
+
+#result{
+    grid-area: 1 / 1 / 2 / 5;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    border: 1px solid royalblue;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: 700;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.calc-icons{
+    font-weight: 700;
+}
+
+@media (max-width: 1536px) {
+    .container{
+        max-width: 1280px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .container{
+        max-width: 1024px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container{
+        max-width: 768px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container{
+        max-width: 640px;
+    }
+}
+
+@media (max-width: 640px) {
+    .container{
+        max-width: 475px;
+    }
+}
+
+@media (max-width: 475px) {
+    .container{
+        width: 100%;
+    }
+}
