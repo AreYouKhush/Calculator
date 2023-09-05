@@ -142,3 +142,9 @@ h1{
         height: 350px;
     }
 }
+
+@media (max-height: 650px){
+    .calc-container{
+        height: 350px;
+    }
+}
