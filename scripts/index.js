@@ -41,6 +41,9 @@ function displayNumber(value){
 function back(){
     inputString = inputString.slice(0, -1);
     resultElement.innerText = resultElement.innerText.slice(0, -1);
+    if(inputString.length === 0){
+        clearFun();
+    }
 }
 
 //Clear Button
