@@ -141,6 +141,9 @@ h1{
     .calc-container{
         height: 350px;
     }
+    header{
+        width: 100%;
+    }
 }
 
 @media (max-height: 650px){
