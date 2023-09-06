@@ -96,10 +96,13 @@ function equals(){
         index++;
     }
 
+
     infixToPostfix(expressionArray);
     resultNumber = calculate();
     resultElement.innerText = resultNumber;
-    inputString = "0";
+    console.log({inputString});
+    inputString = JSON.stringify(resultNumber);
+    // console.log({tempStack, postfixExpression});
 }
 
 function infixToPostfix(expressionArray){
@@ -206,7 +209,12 @@ function calculate(){
         }
         index++;
     }
-    return tempStack[tempStack.length - 1];
+    let answer = tempStack[tempStack.length - 1];
+    console.log({tempStack, postfixExpression});
+    tempStack = [];
+    postfixExpression = [];
+    expressionArray = [];
+    return answer;
 }
 
 document.addEventListener('keydown', (e)=>{
