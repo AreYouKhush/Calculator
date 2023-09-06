@@ -87,7 +87,6 @@ clearElement.addEventListener('click', ()=>{
     expressionArray = [];
     postfixExpression = [];
     tempStack = [];
-    console.log("cleared");
 })
 
 equalsElement.addEventListener('click', ()=>{
@@ -99,7 +98,6 @@ equalsElement.addEventListener('click', ()=>{
     let index = 0;
     let toggleDecimal = 0;
    
-    console.log(inputString);
     while(index < inputString.length){
 
         let toggleDecimal = 0;
@@ -166,7 +164,6 @@ function infixToPostfix(expressionArray){
         }
         index++;
     }
-    console.log({tempStack});
     index = tempStack.length - 1;
     while(index >= 0){
         postfixExpression.push(tempStack[index]);
@@ -178,7 +175,6 @@ function infixToPostfix(expressionArray){
 function plusSub(exp){
     if(tempStack.length === 0){
         tempStack.push(exp);
-        console.log("tempstack was empty");
     }
     else if(tempStack[tempStack.length - 1] === '+' || tempStack[tempStack.length - 1] === '-'){
         postfixExpression.push(tempStack[tempStack.length - 1]);
@@ -242,6 +238,5 @@ function calculate(){
         }
         index++;
     }
-    console.log({postfixExpression, tempStack});
     return tempStack[tempStack.length - 1];
 }
