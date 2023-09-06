@@ -205,3 +205,66 @@ function calculate(){
     }
     return tempStack[tempStack.length - 1];
 }
+
+document.addEventListener('keydown', (e)=>{
+    console.log(e.key);
+    switch(e.key){
+        case '1':
+            displayNumber('1');
+            break;
+        case '2':
+            displayNumber('2');
+            break;
+        case '3':
+            displayNumber('3');
+            break;
+        case '4':
+            displayNumber('4');
+            break;
+        case '5':
+            displayNumber('5');
+            break;
+        case '6':
+            displayNumber('6');
+            break;
+        case '7':
+            displayNumber('7');
+            break;
+        case '8':
+            displayNumber('8');
+            break;
+        case '9':
+            displayNumber('9');
+            break;
+        case '0':
+            displayNumber('0');
+            break;
+        case '*':
+            displayNumber('x');
+            break;
+        case '/':
+            displayNumber('/');
+            break;
+        case '%':
+            displayNumber('%');
+            break;
+        case '+':
+            displayNumber('+');
+            break;
+        case '-':
+            displayNumber('-');
+            break;
+        case '.':
+            displayNumber('.');
+            break;
+        case 'Backspace':
+            back();
+            break;
+        case '=':
+            equals();
+            break;
+        case 'Enter':
+            equals();
+            break;
+    }
+})
