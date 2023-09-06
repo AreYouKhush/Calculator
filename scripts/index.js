@@ -1,50 +1,13 @@
 const resultElement = document.getElementById("result");
 
-const zeroElement = document.getElementById("zero");
-const oneElement = document.getElementById("one");
-const twoElement = document.getElementById("two");
-const threeElement = document.getElementById("three");
-const fourElement = document.getElementById("four");
-const fiveElement = document.getElementById("five");
-const sixElement = document.getElementById("six");
-const sevenElement = document.getElementById("seven");
-const eightElement = document.getElementById("eight");
-const nineElement = document.getElementById("nine");
-
-const clearElement = document.getElementById("clear");
-const percentageElement = document.getElementById("percentage");
-const divideElement = document.getElementById("divide");
-const multiplyElement = document.getElementById("multiply");
-const subtractElement = document.getElementById("subtract");
-const plusElement = document.getElementById("plus");
-const dotElement = document.getElementById("dot");
-const equalsElement = document.getElementById("equals");
-const backElement = document.getElementById("back");
-
-const numberElementArray = [zeroElement, oneElement, twoElement, threeElement, fourElement, fiveElement, sixElement, sevenElement, eightElement, nineElement, percentageElement, divideElement, multiplyElement, subtractElement, plusElement, dotElement];
-
-let inputNumberArray = [];  //Stores array of digits
-let wholeNumberArray = [];  //Stores all the input numbers
-let wholeNumber;            //Stores a full number
 let inputString = "0";
 let decimalFlag = 0;
 let expressionArray = [];
 let postfixExpression = [];
 let tempStack = [];
 
-//Add event listener to all the numbered buttons
-numberElementArray.forEach((e)=>{
-    e.addEventListener('click', ()=>{
-        wholeNumberArray.pop(wholeNumber);
-        inputNumberArray.push(Number(e.innerText));
-        let value = e.innerText;
-        contNumber(value);
-        // wholeNumberArray.push(wholeNumber);
-    })
-});
-
-//Add Number according to place
-function contNumber(value){
+//Could also use eval() to reduce the hassle but didn't want to.
+function displayNumber(value){
 
     let lastInputValue = inputString[inputString.length - 1];
 
@@ -75,21 +38,23 @@ function contNumber(value){
     resultElement.innerText = inputString;
 }
 
-backElement.addEventListener('click', ()=>{
+function back(){
     inputString = inputString.slice(0, -1);
     resultElement.innerText = resultElement.innerText.slice(0, -1);
-})
+}
 
 //Clear Button
-clearElement.addEventListener('click', ()=>{
+function clearFun(){
     resultElement.innerText = "0";
     inputString = "0";
+    decimalFlag = 0;
     expressionArray = [];
     postfixExpression = [];
     tempStack = [];
-})
+}
 
-equalsElement.addEventListener('click', ()=>{
+//Equals Button
+function equals(){
 
     let number = 0;
     let decimalNumber = 0;
@@ -132,7 +97,7 @@ equalsElement.addEventListener('click', ()=>{
     resultNumber = calculate();
     resultElement.innerText = resultNumber;
     inputString = "0";
-});
+}
 
 function infixToPostfix(expressionArray){
     let index = 0;
