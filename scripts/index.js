@@ -218,7 +218,6 @@ function calculate(){
 }
 
 document.addEventListener('keydown', (e)=>{
-    console.log(e.key);
     switch(e.key){
         case '1':
             displayNumber('1');
