@@ -100,9 +100,7 @@ function equals(){
     infixToPostfix(expressionArray);
     resultNumber = calculate();
     resultElement.innerText = resultNumber;
-    console.log({inputString});
     inputString = JSON.stringify(resultNumber);
-    // console.log({tempStack, postfixExpression});
 }
 
 function infixToPostfix(expressionArray){
@@ -210,7 +208,6 @@ function calculate(){
         index++;
     }
     let answer = tempStack[tempStack.length - 1];
-    console.log({tempStack, postfixExpression});
     tempStack = [];
     postfixExpression = [];
     expressionArray = [];
