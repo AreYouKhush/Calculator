@@ -5,6 +5,7 @@ let decimalFlag = 0;
 let expressionArray = [];
 let postfixExpression = [];
 let tempStack = [];
+let negativeFlag = 0;
 
 //Could also use eval() to reduce the hassle but didn't want to.
 function displayNumber(value){
@@ -28,6 +29,20 @@ function displayNumber(value){
 
     if(value === "x" || value === "/" || value === "%" || value === "+" || value === "-"){
         decimalFlag = 0;
+        negativeFlag = 0;
+    }
+
+    if(value === '-' && inputString === "0"){
+        inputString = "";
+    }
+
+    if(lastInputValue !== '-' && value === "-"){
+        if(negativeFlag === 0){
+            inputString = inputString.concat(value);
+            resultElement.innerText = inputString;
+            negativeFlag = 1;
+            return;
+        }
     }
 
     if((lastInputValue === "/" || lastInputValue === "x" || lastInputValue === "%" || lastInputValue === "+" || lastInputValue === "-") && (value === "x" || value === "/" || value === "%" || value === "+" || value === "-")){
@@ -64,12 +79,17 @@ function equals(){
     let decimalPlaces = 1;
     let resultNumber = 0;
     let index = 0;
-    let toggleDecimal = 0;
    
     while(index < inputString.length){
 
         let toggleDecimal = 0;
+        let toggleNegative = 0;
         decimalPlaces = 1;
+        
+        if((index === 0 && inputString[0] === "-") || inputString[index] === '-'){
+            toggleNegative = 1;
+            index++;
+        }
 
         while(!isNaN(inputString[index]) || inputString[index] === '.'){
             if(inputString[index] === '.'){
@@ -82,20 +102,26 @@ function equals(){
                 index++;
                 continue;
             }
-            number = (number*10) + Number(inputString[index]);
+            if(toggleNegative){
+                number = -((number*10) + Number(inputString[index]));
+            }else{
+                number = (number*10) + Number(inputString[index]);
+            }
             index++;
         }
 
         number = number + decimalNumber;
+
         decimalNumber = 0;
         expressionArray.push(number);
-        if(index < inputString.length){
+        if((isNaN(inputString[index - 1]) && inputString[index] === "-")){
+            expressionArray.push[inputString[index - 1]];
+        }else if(index < inputString.length){
             expressionArray.push(inputString[index]);
         }
         number = 0;
         index++;
     }
-
 
     infixToPostfix(expressionArray);
     resultNumber = calculate();
