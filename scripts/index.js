@@ -86,7 +86,7 @@ function equals(){
         let toggleNegative = 0;
         decimalPlaces = 1;
         
-        if((index === 0 && inputString[0] === "-") || inputString[index] === '-'){
+        if( (inputString[index] === '-')){
             toggleNegative = 1;
             index++;
         }
@@ -97,7 +97,11 @@ function equals(){
                 index++;
             }
             if(toggleDecimal){
-                decimalNumber += Number(inputString[index])/Math.pow(10, decimalPlaces);
+                if(toggleNegative){
+                    decimalNumber -= Number(inputString[index])/Math.pow(10, decimalPlaces);
+                }else{
+                    decimalNumber += Number(inputString[index])/Math.pow(10, decimalPlaces);
+                }
                 decimalPlaces++;
                 index++;
                 continue;
@@ -110,7 +114,7 @@ function equals(){
             index++;
         }
 
-        number = number + decimalNumber;
+            number = number + decimalNumber;
 
         decimalNumber = 0;
         expressionArray.push(number);
