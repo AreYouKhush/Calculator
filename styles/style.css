@@ -140,20 +140,7 @@ h1{
     }
     .calc-container{
         width: 375px;
-        height: 650px;
-    }
-    header{
-        width: 100%;
-    }
-}
-
-@media (max-width: 375px) {
-    .container{
-        width: 80%;
-    }
-    .calc-container{
-        width: 375px;
-        height: 500px;
+        height: 475px;
     }
     header{
         width: 100%;
