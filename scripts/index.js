@@ -17,12 +17,26 @@ function displayNumber(value){
         inputString = "";
     }
 
-    if(isNaN(value)){
+    if(isNaN(value)  && value !== "."){
         equalsFlag = 0;
+    }
+        
+    if(equalsFlag){
+        if(!isNaN(value) || value === "."){
+            inputString = "";
+            equalsFlag = 0;
+        }
+    }
+
+    if(lastInputValue === "." && value === "-"){
+        return;
     }
 
     if(value === "."){
         if(decimalFlag === 0){
+            if(isNaN(lastInputValue) || inputString.length === 0){
+                inputString = inputString.concat("0");
+            }
             inputString = inputString.concat(value);
             resultElement.innerText = inputString;
             decimalFlag = 1;
@@ -50,16 +64,8 @@ function displayNumber(value){
         }
     }
 
-    if((lastInputValue === "/" || lastInputValue === "x" || lastInputValue === "%" || lastInputValue === "+" || lastInputValue === "-") && (value === "x" || value === "/" || value === "%" || value === "+" || value === "-")){
+    if((lastInputValue === "/" || lastInputValue === "x" || lastInputValue === "%" || lastInputValue === "+" || lastInputValue === "-" || lastInputValue === ".") && (value === "x" || value === "/" || value === "%" || value === "+" || value === "-")){
         return;
-    }
-
-    if(equalsFlag){
-        if(!isNaN(value)){
-            console.log("Value is a number");
-            inputString = "";
-        }
-        equalsFlag = 0;
     }
 
     inputString = inputString.concat(value);
@@ -87,6 +93,10 @@ function clearFun(){
 
 //Equals Button
 function equals(){
+    decimalFlag = 0;
+    while(isNaN(inputString[inputString.length - 1])){
+        inputString = inputString.slice(0, inputString.length - 1);
+    }
 
     let number = 0;
     let decimalNumber = 0;
@@ -146,7 +156,6 @@ function equals(){
     resultElement.innerText = resultNumber;
     inputString = JSON.stringify(resultNumber);
     equalsFlag = 1;
-    console.log({equalsFlag});
 }
 
 function infixToPostfix(expressionArray){
