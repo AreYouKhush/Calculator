@@ -32,6 +32,10 @@ function displayNumber(value){
         return;
     }
 
+    if((lastInputValue === "/" || lastInputValue === "x" || lastInputValue === "%" || lastInputValue === "+" || lastInputValue === "-" || lastInputValue === ".") && (value === "x" || value === "/" || value === "%" || value === "+" || value === "-")){  
+        return;
+    }
+
     if(value === "."){
         if(decimalFlag === 0){
             if(isNaN(lastInputValue) || inputString.length === 0){
@@ -62,11 +66,6 @@ function displayNumber(value){
             negativeFlag = 1;
             return;
         }
-    }
-
-    if((lastInputValue === "/" || lastInputValue === "x" || lastInputValue === "%" || lastInputValue === "+" || lastInputValue === "-" || lastInputValue === ".") && (value === "x" || value === "/" || value === "%" || value === "+" || value === "-")){
-        decimalFlag = 1;
-        return;
     }
 
     inputString = inputString.concat(value);
