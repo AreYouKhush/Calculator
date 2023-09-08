@@ -65,6 +65,7 @@ function displayNumber(value){
     }
 
     if((lastInputValue === "/" || lastInputValue === "x" || lastInputValue === "%" || lastInputValue === "+" || lastInputValue === "-" || lastInputValue === ".") && (value === "x" || value === "/" || value === "%" || value === "+" || value === "-")){
+        decimalFlag = 1;
         return;
     }
 
