@@ -6,6 +6,7 @@ let expressionArray = [];
 let postfixExpression = [];
 let tempStack = [];
 let negativeFlag = 0;
+let equalsFlag = 0;
 
 //Could also use eval() to reduce the hassle but didn't want to.
 function displayNumber(value){
@@ -14,6 +15,10 @@ function displayNumber(value){
 
     if(!isNaN(value) && inputString === "0"){
         inputString = "";
+    }
+
+    if(isNaN(value)){
+        equalsFlag = 0;
     }
 
     if(value === "."){
@@ -49,6 +54,14 @@ function displayNumber(value){
         return;
     }
 
+    if(equalsFlag){
+        if(!isNaN(value)){
+            console.log("Value is a number");
+            inputString = "";
+        }
+        equalsFlag = 0;
+    }
+
     inputString = inputString.concat(value);
     resultElement.innerText = inputString;
 }
@@ -69,6 +82,7 @@ function clearFun(){
     expressionArray = [];
     postfixExpression = [];
     tempStack = [];
+    equalsFlag = 0;
 }
 
 //Equals Button
@@ -131,6 +145,8 @@ function equals(){
     resultNumber = calculate();
     resultElement.innerText = resultNumber;
     inputString = JSON.stringify(resultNumber);
+    equalsFlag = 1;
+    console.log({equalsFlag});
 }
 
 function infixToPostfix(expressionArray){
