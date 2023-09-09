@@ -32,6 +32,15 @@ function displayNumber(value){
         return;
     }
 
+    if(lastInputValue !== '-' && value === "-"){
+        if(negativeFlag === 0){
+            inputString = inputString.concat(value);
+            resultElement.innerText = inputString;
+            negativeFlag = 1;
+            return;
+        }
+    }
+
     if((lastInputValue === "/" || lastInputValue === "x" || lastInputValue === "%" || lastInputValue === "+" || lastInputValue === "-" || lastInputValue === ".") && (value === "x" || value === "/" || value === "%" || value === "+" || value === "-")){  
         return;
     }
@@ -59,14 +68,6 @@ function displayNumber(value){
         inputString = "";
     }
 
-    if(lastInputValue !== '-' && value === "-"){
-        if(negativeFlag === 0){
-            inputString = inputString.concat(value);
-            resultElement.innerText = inputString;
-            negativeFlag = 1;
-            return;
-        }
-    }
 
     inputString = inputString.concat(value);
     resultElement.innerText = inputString;
