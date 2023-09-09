@@ -41,11 +41,14 @@ header{
     left: 0;
     top: 0;
     width: 100% !important;
+    animation-delay: 1s;
+    animation: anim 1s ease-in;
 }
 
-h1{
+header>h1{
     color: white;
     text-align: center;
+    animation: header-text 1.5s ease-in;
 }
 
 .calc-container{
@@ -54,6 +57,7 @@ h1{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 30%;
     height: 500px;
+    animation: calc-anim 1s ease-in-out;
 }
 
 #result{
@@ -150,5 +154,35 @@ h1{
 @media (max-height: 650px){
     .calc-container{
         height: 350px;
+    }
+}
+
+@keyframes anim {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes header-text {
+    0%, 50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes calc-anim{
+    0%,
+    25%{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
     }
 }
